@@ -9,11 +9,13 @@ This project provides real-time and batch pose estimation for sports videos usin
 
 ## Model Used & Why
 - **MediaPipe Pose Landmarker (Lite)** – CPU-efficient, runs in real-time on consumer hardware
+- **Model file**: `pose_landmarker.task` (5.8 MB) – included in repository for offline use
 - Chosen for:
   - Speed (real-time performance on webcam)
   - Stability for full-body landmarks
   - No GPU requirement
   - Consistent joint naming and visibility scores
+  - Detects 33 body landmarks (nose, eyes, shoulders, elbows, wrists, hips, knees, ankles, etc.)
 
 ## Metrics Defined
 - **Torso lean angle**: Angle of torso relative to vertical (balance/posture indicator)
@@ -49,6 +51,12 @@ This project provides real-time and batch pose estimation for sports videos usin
 - Optional recording to MP4
 - Auto-save functionality with timestamped files
 - Live angle display in sidebar
+
+### Example Outputs (`outputs/run1/`)
+- `overlay.mp4`: Example video with skeleton overlay and angle annotations
+- `keypoints.csv/.json`: Sample pose data for analysis
+- `metrics.csv/.json`: Computed angles and speeds
+- `metrics_summary.json`: Statistical summary of the analysis
 
 ## How to Run
 
@@ -87,7 +95,8 @@ sports-pose-metrics/
 ├── data/
 │   └── squat_side_view.mp4
 ├── outputs/               # Generated results
-├── pose_landmarker.task   # MediaPipe model file
+│   └── run1/             # Example outputs (overlay video, keypoints, metrics)
+├── pose_landmarker.task   # MediaPipe pre-trained model (5.8 MB)
 └── requirements.txt
 ```
 
